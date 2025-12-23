@@ -1,21 +1,5 @@
 import { useState } from 'react'
 
-function Header() {
-  return (
-    <header>
-      <h1>This is header</h1>
-    </header>
-  )
-}
-
-function AlertButton() {
-  const handleClick = (e:any) => {
-    alert("Button clicked!");
-    console.log(e.target);
-  };
-  return <button onClick={handleClick}>Click Me</button>;
-}
-
 function App() {
   const [task, setTask] = useState<{name: string; status: string}[]>([]);
   const [newTask, setNewTask] = useState({name: '', status: 'Inprogress'});
@@ -29,7 +13,7 @@ function App() {
     setNewTask({name: '', status: 'Inprogress'});
     localStorage.setItem('tasks', JSON.stringify([...task, newTask]));
   }
-  
+
   onload = () => {
     const storedTasks = localStorage.getItem('tasks');
     if (storedTasks) {
@@ -78,7 +62,6 @@ function App() {
 
   return (
     <>
-      <Header />
       <h2>Todo-app</h2>
       <LoadAllTask />
       <br /><br />
